@@ -1,0 +1,17 @@
+extends layout
+block content
+  div
+    .login_wrapper
+      .animate.form.login_form
+        section.login_content
+          form(method='POST' action='/users/login')
+            h1 Login Form
+            div
+              input.form-control(type='text', placeholder='Username', name='username')
+            div
+              input.form-control(type='password', placeholder='Password', name='password')
+            .col-md-6.center-margin
+              div
+                input.btn.btn-primary(type='submit',value='Submit')
+              .clearfix
+

@@ -1,0 +1,21 @@
+extends layout
+
+block content
+  .clearfix
+  .row
+    .col-md-10.center-margin
+      .x_panel
+        #quizContainer.container
+         .x_title
+           h2 #{title}
+           .clearfix
+         .x_content
+          .col-md-10.center-margin 
+           a#link1(href='/assessment/procuretopay')
+            button#button1.btn.btn-primary.btn-block.btn-lg Procure To Pay
+           br 
+           a#link2(href='/assessment/ordertocash')
+            button#button2.btn.btn-primary.btn-block.btn-lg Order To Cash
+           br
+           a#link3(href='/assessment/hiretoretire')
+            button#button3.btn.btn-primary.btn-block.btn-lg Hire To Retire

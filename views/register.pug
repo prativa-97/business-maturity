@@ -1,0 +1,23 @@
+extends layout
+block content
+  div
+    .login_wrapper
+      .animate.form.login_form
+        section.login_content
+          form(method='POST', action='/users/register')
+            h1 Register
+            #form-group
+              input.form-control(name='name', type='text', placeholder='Name')
+            #form-group
+              input.form-control(name='email', type='text',placeholder='E-mail')
+            #form-group
+              input.form-control(name='company', type='text', placeholder='Organization/Company')
+            #form-group
+              input.form-control(name='username',type='text' , placeholder='Username')
+            #form-group
+              input.form-control(name='password',type='password' , placeholder='Password')
+            #form-group
+              input.form-control(name='password2',type='password' , placeholder='Confirm')
+            .col-md-6.center-margin
+              br
+              input.btn.btn-primary(type='submit',value='Submit')

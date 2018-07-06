@@ -1,0 +1,14 @@
+extends layout
+block content
+	.clearfix
+	.row
+		.col-md-10.center-margin
+			.x_panel
+				.x_title
+					h2 #{title}
+					.clearfix
+				.x_content
+					ul.list-group
+						each article, i in articles
+							li.list-group-item
+								a(href="/articles/"+article._id) #{i+1}. #{article.title}

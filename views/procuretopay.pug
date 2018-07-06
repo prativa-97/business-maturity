@@ -1,0 +1,42 @@
+extends layout
+block content
+  script(type='text/javascript').
+    window.onload = function () {
+      $.getJSON('http://localhost:3000/assessment/results/userdata', function(user) {
+      console.log(user);
+      if(user.p2p.purchasesection != 0 ){
+        document.getElementById('button1').className = "btn btn-success btn-block btn-lg";
+        }
+      if(user.p2p.vendoranalysis != 0 ){
+        document.getElementById('button2').className = "btn btn-success btn-block btn-lg";
+      }
+      if(user.p2p.finances != 0 ){
+        document.getElementById('button3').className = "btn btn-success btn-block btn-lg";
+      }
+      if(user.p2p.erpsection != 0 ){
+        document.getElementById('button4').className = "btn btn-success btn-block btn-lg";
+      }
+      });
+    }
+  .clearfix
+  .row
+    .col-md-10.center-margin
+      .x_panel
+        #quizContainer.container
+         .x_title
+           h2 Procure to Pay
+           .clearfix
+         .x_content
+          .col-md-10.center-margin 
+           h4 #{title}
+           a#link1(href='/assessment/procuretopay/purchasesection')
+            button#button1.btn.btn-primary.btn-block.btn-lg Purchase Section
+           br 
+           a#link2(href='/assessment/procuretopay/vendoranalysis')
+            button#button2.btn.btn-primary.btn-block.btn-lg Vendor Analyis
+           br
+           a#link3(href='/assessment/procuretopay/finances')
+            button#button3.btn.btn-primary.btn-block.btn-lg Finances
+           br
+           a#link4(href='/assessment/procuretopay/erpsection')
+            button#button4.btn.btn-primary.btn-block.btn-lg ERP Section

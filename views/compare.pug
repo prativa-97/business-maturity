@@ -1,0 +1,195 @@
+extends layout 
+block content
+	.clearfix
+	.row
+		.col-md-10.center-margin
+			.x_panel
+				.x_title
+					h3 #{title}
+					.clearfix
+				.x_content
+						#chartContainer4(style='height: 370px; width: 100%;')
+						br
+						#chartContainer5(style='height: 370px; width: 100%;')
+						br
+						#chartContainer6(style='height: 370px; width: 100%;')
+						.col-md-5.center-margin
+							button#previousDataPoint.btn.btn-danger Previous Companies
+							button#nextDataPoint.btn.btn-primary Next Companies
+	script(type="text/javascript").
+		window.onload = function () {
+		$.getJSON('http://localhost:3000/assessment/results/allusers/data', function(allusers) {
+		console.log(allusers);
+		var total=allusers.length;
+		console.log(total);
+		var count=0;
+		var start=0;
+		
+		var updateChart = function (st,dataLength) {
+			var display=[];
+			console.log(start);
+			for (var j = st; j < dataLength; j++) {
+			display.push({
+				y:allusers[j].p2p.score,
+				label: allusers[j].company+"-"+allusers[j].name
+			});
+			}
+			var chart = new CanvasJS.Chart("chartContainer4", {
+			animationEnabled: true,  
+			title:{
+				text: "Procure To Pay Maturity Data"
+			},
+			axisY: {
+				title: "Maturity",
+				suffix: "%",
+				stripLines: [{
+					value: 1,
+					label: "Average"
+				}]
+			},
+			data: [{
+				xValueFormatString: "Company Name",
+				type: "spline",
+				dataPoints: display
+			}]
+
+		});
+		
+		console.log(start);
+		chart.render();
+		};
+
+		var updateChart2 = function (st,dataLength) {
+			var display=[];
+			console.log(start);
+			for (var j = st; j < dataLength; j++) {
+			display.push({
+				y:allusers[j].o2c.score,
+				label: allusers[j].company+"-"+allusers[j].name
+			});
+			}
+			var chart = new CanvasJS.Chart("chartContainer5", {
+			animationEnabled: true,  
+			title:{
+				text: "Order To Cash Maturity Data"
+			},
+			axisY: {
+				title: "Maturity",
+				suffix: "%",
+				stripLines: [{
+					value: 1,
+					label: "Average"
+				}]
+			},
+			data: [{
+				xValueFormatString: "Company Name",
+				type: "spline",
+				dataPoints: display
+			}]
+
+		});
+		
+		console.log(start);
+		chart.render();
+		};
+
+		var updateChart3 = function (st,dataLength) {
+			var display=[];
+			console.log(start);
+			for (var j = st; j < dataLength; j++) {
+			display.push({
+				y:allusers[j].h2r.score,
+				label: allusers[j].company+"-"+allusers[j].name
+			});
+			}
+			var chart = new CanvasJS.Chart("chartContainer6", {
+			animationEnabled: true,  
+			title:{
+				text: "Hire To Retire Maturity Data"
+			},
+			axisY: {
+				title: "Maturity",
+				suffix: "%",
+				stripLines: [{
+					value: 1,
+					label: "Average"
+				}]
+			},
+			data: [{
+				xValueFormatString: "Company Name",
+				type: "spline",
+				dataPoints: display
+			}]
+
+		});
+		
+		console.log(start);
+		chart.render();
+		};
+
+		
+		if(total<10){
+			updateChart(start,total);
+			updateChart2(start,total);
+			updateChart3(start,total);
+		}
+		else {
+			updateChart(start,10);
+			updateChart2(start,10);
+			updateChart3(start,10);
+		}
+
+
+		$("#nextDataPoint").click(function () {
+		/*chart.options.title.text = "Procure To Pay Maturity Data";*/
+		if(total-start>10){
+			start+=10;
+			updateChart(start,total);
+			updateChart2(start,total);
+			updateChart3(start,total);
+		}
+		else if(total-start<10){
+			updateChart(start,total);
+			updateChart2(start,total);
+			updateChart3(start,total);
+		}
+		});
+		
+		$("#previousDataPoint").click(function () {
+
+		/*chart.options.title.text = "Procure To Pay Maturity Data";*/
+		if(total-start<10){
+			if(total<10){
+				updateChart(start,total);
+				updateChart2(start,total);
+				updateChart3(start,total);
+			}
+			else
+				{
+					start-=10;
+					updateChart(start,10);
+					updateChart2(start,10);
+					updateChart3(start,10);
+				}
+		}
+		else if(total-start>10){
+			if(start==0)
+			{
+				updateChart(start,10);
+				updateChart2(start,10);
+				updateChart3(start,10);
+			}
+			else
+			{
+				start-=10;
+				updateChart(start,10);
+				updateChart2(start,10);
+				updateChart3(start,10);
+			}		
+		}
+		
+		});
+		});
+		}
+
+	script(src='https://canvasjs.com/assets/script/canvasjs.min.js')

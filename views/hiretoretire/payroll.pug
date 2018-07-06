@@ -1,0 +1,33 @@
+extends layout
+block content
+  .clearfix
+  .row
+    .col-md-10.center-margin
+      .x_panel
+        #quizContainer.container
+         .x_title
+           h2 Payroll
+           .clearfix
+         .x_content
+          h3 
+           #question.well
+          #options.container
+           form.formnew
+            .inputGroup
+             input#radio1(name='radio', type='radio' value='1')
+             label(for='radio1')#opt1
+            .inputGroup
+             input#radio2(name='radio', type='radio' value='2')
+             label(for='radio2')#opt2
+            #c3.inputGroup
+             input#radio3(name='radio', type='radio' value='3')
+             label(for='radio3')#opt3
+         .col-md-2.center-margin
+          button#nextButton.btn.btn-primary Next
+        h4
+         #result.well(style='display:none;')
+         a(href='http://localhost:3000/assessment/hiretoretire')
+          .col-md-2.center-margin
+           button#nextSection.btn.btn-primary(style='display:none;') Submit
+  script(type='text/javascript', src='/bower_components/jquery/dist/jquery.js')
+  script(type='text/javascript', src='/hiretoretire/section-33.js')

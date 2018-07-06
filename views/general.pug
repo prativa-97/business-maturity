@@ -1,0 +1,67 @@
+extends layout
+block content
+  .clearfix
+  .row
+    .col-md-10.center-margin
+      .x_panel
+        .x_title
+          h2
+            | General Questionnaire 
+          .clearfix
+        .x_content
+          br
+          .col-md-10.center-margin
+            form.form-horizontal.form-label-left(method='POST', action='/assessment/general')
+              .form-group
+                label 1. How long has your company been in business?
+                select.form-control(name='answer1' )
+                  option(value='0-10 Years') 0-10 Years
+                  option(value='10-25 Years') 10-25 Years
+                  option(value='25-50 Years') 25-50 Years
+                  option(value='>50 Years') >50 Years
+              .form-group
+                label 2. In which industry is your Business?
+                input.form-control(name='answer2', type='text')
+              .form-group
+                label 3. How many people are employed at your company?
+                select.form-control(name='answer3')
+                  option(value='0-10,000') 0-10,000
+                  option(value='10,000-25,000') 10,000-25,000
+                  option(value='25,000-50,000') 25,000-50,000
+                  option(value='50,000-1,00,000') 50,000-1,00,000
+                  option(value='>1,00,000') >1,00,000
+              .form-group
+                label 4. What was the annual revenue for your company last year?
+                input.form-control(name='answer4',type='text')
+              .form-group
+                label 5. Does your company have more than one location?
+                select.form-control(name='answer5')
+                  option(value='Yes') Yes
+                  option(value='No') No
+              .form-group
+                label 6. Does your company do business online?
+                select.form-control(name='answer6')
+                  option(value='Yes') Yes
+                  option(value='No') No
+              .form-group
+                label 7. Does your company serve consumers,businesses or both?
+                select.form-control(name='answer7')
+                  option(value='Only Consumers') Only Consumers
+                  option(value='Only Businesses') Only Businesses 
+                  option(value='Both') Both
+              .form-group
+                label 8. Did you find any disputes from the past audits in your company?
+                select.form-control(name='answer8')
+                  option(value='Not Major') Not Major
+                  option(value='Moderately Severe') Moderately Severe 
+                  option(value='Huge') Did have a huge impact on the firm's reputation
+              .form-group
+                label 9. Which marketing channels do you use to promote your business?
+                input.form-control(name='answer9', type='text')    
+              .form-group
+                label 10. Describe the certification of the firm?
+                input.form-control(name='answer10', type='text')
+              .form-group
+                .col-md-6.col-sm-6.col-xs-12.col-md-offset-5
+                  button.btn.btn-primary(type='reset') Reset
+                  button.btn.btn-success(type='submit') Submit

@@ -1,0 +1,54 @@
+extends layout
+block content
+  .clearfix
+  .row
+    .col-md-10.center-margin
+      .x_panel
+        .x_title
+          h2
+            | General Data 
+          .clearfix
+        .x_content
+          br
+          .col-md-10.center-margin
+            form.form-horizontal.form-label-left
+              .form-group
+                label 1. How long has your company been in business?
+                .well
+                  label #{general[0].answer1}
+              .form-group
+                label 2. In which industry is your Business?
+                .well
+                  label #{general[0].answer2}
+              .form-group
+                label 3. How many people are employed at your company?
+                .well
+                  label #{general[0].answer3}
+              .form-group
+                label 4. What was the annual revenue for your company last year?
+                .well
+                  label #{general[0].answer4}
+              .form-group
+                label 5. Does your company have more than one location?
+                .well
+                  label #{general[0].answer5}
+              .form-group
+                label 6. Does your company do business online?
+                .well
+                  label #{general[0].answer6}
+              .form-group
+                label 7. Does your company serve consumers,businesses or both?
+                .well
+                  label #{general[0].answer7}
+              .form-group
+                label 8. Did you find any disputes from the past audits in your company?
+                .well
+                  label #{general[0].answer8}
+              .form-group
+                label 9. Which marketing channels do you use to promote your business?
+                .well
+                  label #{general[0].answer9}
+              .form-group
+                label 10. Describe the certification of the firm?
+                .well
+                  label #{general[0].answer10}

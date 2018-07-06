@@ -1,0 +1,46 @@
+extends layout
+block content
+  script(type='text/javascript').
+    window.onload = function () {
+      $.getJSON('http://localhost:3000/assessment/results/userdata', function(user) {
+        console.log(user);
+        if(user.o2c.creditanalysis != 0 ){
+          document.getElementById('button1').className = "btn btn-success btn-block btn-lg";
+          document.getElementById('link1').href = "#";
+          }
+        if(user.o2c.billing != 0 ){
+          document.getElementById('button2').className = "btn btn-success btn-block btn-lg";
+          document.getElementById('link2').href = "#";
+        }
+        if(user.o2c.cashapplication != 0 ){
+          document.getElementById('button3').className = "btn btn-success btn-block btn-lg";
+          document.getElementById('link3').href = "#";
+        }
+        if(user.o2c.glposting != 0 ){
+          document.getElementById('button4').className = "btn btn-success btn-block btn-lg";
+          document.getElementById('link4').href = "#";
+        }
+      });
+    }
+  .clearfix
+  .row
+    .col-md-10.center-margin
+      .x_panel
+        #quizContainer.container
+         .x_title
+           h2 Procure to Pay
+           .clearfix
+         .x_content
+          .col-md-10.center-margin 
+           h4 #{title}
+           a#link1(href='/assessment/ordertocash/creditanalysis')
+            button#button1.btn.btn-primary.btn-block.btn-lg Credit Analysis
+           br 
+           a#link2(href='/assessment/ordertocash/billing')
+            button#button2.btn.btn-primary.btn-block.btn-lg Billing
+           br
+           a#link3(href='/assessment/ordertocash/cashapplication')
+            button#button3.btn.btn-primary.btn-block.btn-lg Cash Application
+           br
+           a#link4(href='/assessment/ordertocash/glposting')
+            button#button4.btn.btn-primary.btn-block.btn-lg GL Posting
