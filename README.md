@@ -10,3 +10,5 @@ This is a questionnaire app used in a private Organisation.
 * Pug Templating
 * Passport.js Authentication
 * BCrypt Hashing
+* CSS
+* ZingChart
